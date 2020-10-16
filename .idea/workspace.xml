@@ -23,7 +23,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/local.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/makeHelp.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -99,6 +99,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="makeHelp" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="VictorBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\John\.conda\envs\VictorBot\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/makeHelp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="once" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="VictorBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,6 +146,7 @@
     <list>
       <item itemvalue="Python.Local" />
       <item itemvalue="Python.Victor" />
+      <item itemvalue="Python.makeHelp" />
       <item itemvalue="Python.Dump" />
       <item itemvalue="Python.once" />
     </list>
@@ -137,7 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602843523233</updated>
       <workItem from="1602843524315" duration="1245000" />
-      <workItem from="1602844785714" duration="15769000" />
+      <workItem from="1602844785714" duration="18285000" />
     </task>
     <servers />
   </component>
@@ -145,34 +168,34 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="294" y="160" width="1092" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602858303757">
+    <state x="294" y="152" width="1092" height="858" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602862975849">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="294" y="160" width="1092" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602858303757" />
-    <state x="620" y="284" key="FileChooserDialogImpl" timestamp="1602858297452">
+    <state x="294" y="152" width="1092" height="858" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602862975849" />
+    <state x="620" y="284" key="FileChooserDialogImpl" timestamp="1602862974360">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="620" y="284" key="FileChooserDialogImpl/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602858297452" />
+    <state x="620" y="284" key="FileChooserDialogImpl/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602862974360" />
     <state x="664" y="407" key="Github.CreateGistDialog" timestamp="1602858035611">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="664" y="407" key="Github.CreateGistDialog/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602858035611" />
-    <state width="1637" height="272" key="GridCell.Tab.0.bottom" timestamp="1602860890460">
+    <state width="1637" height="272" key="GridCell.Tab.0.bottom" timestamp="1602863516420">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.bottom/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602860890460" />
-    <state width="1637" height="272" key="GridCell.Tab.0.center" timestamp="1602860890460">
+    <state width="1637" height="272" key="GridCell.Tab.0.bottom/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602863516420" />
+    <state width="1637" height="272" key="GridCell.Tab.0.center" timestamp="1602863516420">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.center/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602860890460" />
-    <state width="1637" height="272" key="GridCell.Tab.0.left" timestamp="1602860890460">
+    <state width="1637" height="272" key="GridCell.Tab.0.center/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602863516420" />
+    <state width="1637" height="272" key="GridCell.Tab.0.left" timestamp="1602863516420">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.left/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602860890460" />
-    <state width="1637" height="272" key="GridCell.Tab.0.right" timestamp="1602860890460">
+    <state width="1637" height="272" key="GridCell.Tab.0.left/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602863516420" />
+    <state width="1637" height="272" key="GridCell.Tab.0.right" timestamp="1602863516420">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.right/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602860890460" />
+    <state width="1637" height="272" key="GridCell.Tab.0.right/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602863516420" />
     <state width="1637" height="336" key="GridCell.Tab.1.bottom" timestamp="1602853755550">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -203,7 +226,8 @@
     <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602850111584" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VictorBot$Victor.coverage" NAME="Victor Coverage Results" MODIFIED="1602860890455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VictorBot$Victor.coverage" NAME="Victor Coverage Results" MODIFIED="1602863516413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VictorBot$makeHelp.coverage" NAME="makeHelp Coverage Results" MODIFIED="1602863026867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VictorBot$Dump.coverage" NAME="Dump Coverage Results" MODIFIED="1602848658311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VictorBot$once.coverage" NAME="once Coverage Results" MODIFIED="1602849402268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VictorBot$Local.coverage" NAME="Local Coverage Results" MODIFIED="1602859826416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

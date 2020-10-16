@@ -2,24 +2,28 @@ import userData
 import messages
 import random
 import datetime
+import files
 
 async def run(command, message, structure):
     if command == "userdata":
         if userData.exists(message.author.id):
             await messages.reply(message, str(userData))
-    if command == "setup":
+        return
+    elif command == "givetask":
         if userData.exists(message.author.id):
-            await messages.reply(message, "UserData for **"+str(message.author)+"** already exists")
+            print("A")
         else:
             userData.create(message.author.id)
+            await run(command, message, structure)
         return
-    if command == "cash":
+    elif command == "cash":
         if userData.exists(message.author.id):
             await messages.reply(message, "**"+str(message.author)+"**, you currently have "+'{:,}'.format(userData.read(message.author.id)["money"])+"€")
         else:
-            await run("setup",message,structure)
+            userData.create(message.author.id)
             await run(command,message,structure)
-    if command == "cf" or command == "coinflip":
+        return
+    elif command == "cf" or command == "coinflip":
         if userData.exists(message.author.id):
             try:
                 bet = structure[2]
@@ -33,7 +37,7 @@ async def run(command, message, structure):
                 else:
                     bet = 1
             if userData.read(message.author.id)["money"] < bet:
-                await messages.reply(message, "You dont have enough money")
+                await messages.reply(message, "**"+str(message.author)+"**, you dont have enough money")
                 return
             if bet <= 0:
                 await messages.reply(message, "HABEN SIE NICHT VERSTANDEN WIE FUNKTIONIERT ?")
@@ -50,13 +54,14 @@ async def run(command, message, structure):
                 userData.write(message.author.id, data)
                 return
         else:
-            await run("setup", message, structure)
+            userData.create(message.author.id)
             await run("cf", message, structure)
+        return
 
-    if command == "daily":
+    elif command == "daily":
         if userData.exists(message.author.id):
             if not userData.keyExists(message.author.id,"lastDaily",str(datetime.date.today())):
-                await messages.reply(message, "You got 1,000 €")
+                await messages.reply(message, "**"+str(message.author)+"**, you got 1,000 €")
                 data = userData.read(message.author.id)
                 data["money"] = data["money"]+1000
                 userData.write(message.author.id, data)
@@ -65,6 +70,13 @@ async def run(command, message, structure):
                 await messages.reply(message, "You have already claimed your daily")
 
         else:
-            await run("setup", message, structure)
+            userData.create(message.author.id)
             await run(command,message,structure)
+        return
+    elif command == "help":
+        with open("help.pkl", "rb")as f:
+            help = files.read("help.pkl")
+            await messages.reply(message, help)
+    else:
+        await messages.reply(message, "Command not recognised please try again \n Type vic help to list commands")
 

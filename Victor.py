@@ -21,7 +21,7 @@ async def on_message(message):
     if await messages.checkForbidden(message):
         await message.delete()
         return
-    if not message.content.startswith("vic"):
+    if not message.content.lower().startswith("vic"):
         return
     structure = messages.extractStructure(message)
     command = messages.extractCommand(structure)

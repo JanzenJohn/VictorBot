@@ -1,6 +1,6 @@
 import pickle
 import os.path
-
+import files
 
 def path(id):
     return "data/"+str(id)+".pkl"
@@ -11,16 +11,12 @@ def exists(id):
 
 
 def write(id, userData):
-    with open(path(id), "wb")as f:
-        pickle.dump(userData, f)
-        #Takes userData and dumps it to file
+    files.write(path(id), userData)
 
 
 def read(id):
     if exists(id):
-        with open(path(id), "rb")as f:
-            userData = pickle.load(f)
-            return userData
+        return files.read(path(id))
 
 
 def create(id):
@@ -31,6 +27,7 @@ def create(id):
 
     }
     write(id, userData)
+
 
 def keyExists(id, key, value):
     with open(path(id), "rb")as f:
