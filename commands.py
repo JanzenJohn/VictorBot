@@ -40,12 +40,12 @@ async def run(command, message, structure):
                 return
             data = userData.read(message.author.id)
             if random.randint(0,1) == 1:
-                await messages.reply(message, "You have Won")
+                await messages.reply(message, "**"+str(message.author)+"**,"+" you have won : "+'{:,}'.format(bet)+"€")
                 data["money"] = data["money"] + bet
                 userData.write(message.author.id, data)
                 return
             else:
-                await messages.reply(message, "You have lost")
+                await messages.reply(message,"**"+str(message.author)+"**,"+" you have lost : "'{:,}'.format(bet)+"€")
                 data["money"] = data["money"] - bet
                 userData.write(message.author.id, data)
                 return

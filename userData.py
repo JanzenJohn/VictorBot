@@ -24,14 +24,13 @@ def read(id):
 
 
 def create(id):
-    with open(path(id), "wb")as f:
-        userData = {
-            "money": 0,
-            "rank": "nobody",
-            "wins": 0
+    userData = {
+        "money": 0,
+        "rank": "nobody",
+        "wins": 0
 
-        }
-        write(id, userData)
+    }
+    write(id, userData)
 
 def keyExists(id, key, value):
     with open(path(id), "rb")as f:

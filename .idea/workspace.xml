@@ -32,7 +32,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Python.Local">
+  <component name="RunManager" selected="Python.Victor">
     <configuration name="Dump" type="PythonConfigurationType" factoryName="Python">
       <module name="VictorBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -137,7 +137,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602843523233</updated>
       <workItem from="1602843524315" duration="1245000" />
-      <workItem from="1602844785714" duration="14299000" />
+      <workItem from="1602844785714" duration="15769000" />
     </task>
     <servers />
   </component>
@@ -157,22 +157,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="664" y="407" key="Github.CreateGistDialog/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602858035611" />
-    <state width="1637" height="272" key="GridCell.Tab.0.bottom" timestamp="1602859642804">
+    <state width="1637" height="272" key="GridCell.Tab.0.bottom" timestamp="1602860890460">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.bottom/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602859642804" />
-    <state width="1637" height="272" key="GridCell.Tab.0.center" timestamp="1602859642804">
+    <state width="1637" height="272" key="GridCell.Tab.0.bottom/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602860890460" />
+    <state width="1637" height="272" key="GridCell.Tab.0.center" timestamp="1602860890460">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.center/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602859642804" />
-    <state width="1637" height="272" key="GridCell.Tab.0.left" timestamp="1602859642804">
+    <state width="1637" height="272" key="GridCell.Tab.0.center/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602860890460" />
+    <state width="1637" height="272" key="GridCell.Tab.0.left" timestamp="1602860890460">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.left/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602859642804" />
-    <state width="1637" height="272" key="GridCell.Tab.0.right" timestamp="1602859642804">
+    <state width="1637" height="272" key="GridCell.Tab.0.left/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602860890460" />
+    <state width="1637" height="272" key="GridCell.Tab.0.right" timestamp="1602860890460">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.right/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602859642804" />
+    <state width="1637" height="272" key="GridCell.Tab.0.right/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602860890460" />
     <state width="1637" height="336" key="GridCell.Tab.1.bottom" timestamp="1602853755550">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -203,9 +203,9 @@
     <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/1680.0.1680.1010/0.0.1680.1010/-1280.25.1280.984@0.0.1680.1010" timestamp="1602850111584" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/VictorBot$Victor.coverage" NAME="Victor Coverage Results" MODIFIED="1602858391689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VictorBot$Victor.coverage" NAME="Victor Coverage Results" MODIFIED="1602860890455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VictorBot$Dump.coverage" NAME="Dump Coverage Results" MODIFIED="1602848658311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VictorBot$once.coverage" NAME="once Coverage Results" MODIFIED="1602849402268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VictorBot$Local.coverage" NAME="Local Coverage Results" MODIFIED="1602859642797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VictorBot$Local.coverage" NAME="Local Coverage Results" MODIFIED="1602859826416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
