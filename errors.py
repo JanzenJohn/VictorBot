@@ -5,3 +5,5 @@ class WrongSyntax(Exception):
 class RulesAreNotAgreed(Exception):
     pass
 
+class LowerOrEqualZero(Exception):
+    pass

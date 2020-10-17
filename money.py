@@ -2,6 +2,7 @@ import user_data
 import random
 import messages
 from datetime import date
+from errors import LowerOrEqualZero
 
 class AmountLowerEqualZero(Exception):
     pass
@@ -28,10 +29,10 @@ def daily(id):
 
 def coinflip(amount, id):
     data = user_data.read(id)
-    money = int(data["money"])
+    money = get(id)
     amount = int(amount)
     if amount <= 0:
-        raise ValueError
+        raise LowerOrEqualZero
     if random.randint(0, 1) == 1:
         data["money"] = money + amount
         user_data.write(id, data)

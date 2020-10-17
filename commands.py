@@ -8,6 +8,7 @@ import help
 from permission import check
 from errors import WrongSyntax
 from errors import RulesAreNotAgreed
+from errors import LowerOrEqualZero
 
 
 async def run(message):
@@ -35,21 +36,21 @@ async def run(message):
 
     elif command in alias.coinflip:
         try:
-            type = messages.get_type(structure, 2)
+            messages.get_type(structure, 2)
+            amount = structure[2]
         except TypeError:
             if structure[2] == "all":
-                amount = user_data.read(id)["money"]
+                amount = money.get(id)
             else:
                 amount = 1
-            type = "all"
-        if type == "int":
-            amount = structure[2]
         try:
-            await messages.reply(money.coinflip(amount, id), message)
-        except ValueError:
+            print(amount)
+            if money.coinflip(amount, id):
+                await messages.reply(user+", you got "+'{:,}'.format(int(amount))+"€ !", message)
+            else:
+                await messages.reply(user+", you lost "+'{:,}'.format(int(amount))+"€ !", message)
+        except LowerOrEqualZero:
             await messages.reply(user + ", Nien",message)
-
-
 
     elif command in alias.money:
         await messages.reply(user + ", you have " + '{:,}'.format(money.get(id))+"€", message)
@@ -75,6 +76,9 @@ async def run(message):
             await messages.reply(admin.show(structure, message),message)
         except RulesAreNotAgreed:
             await messages.reply("The user hasn't agreed rules", message)
+
+    else:
+        await messages.reply(user+", command "+command+" wasn't recognized.", message)
 
 
 

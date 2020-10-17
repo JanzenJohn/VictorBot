@@ -5,12 +5,12 @@ async def check_forbidden(message):
     forbidden = files.read("banned.pkl")
     for x in forbidden:
         if x in message.content:
-            await reply("Denied", message)
+            await reply("Denied : "+x, message)
             return True
 
 
 async def reply(text, message):
-    await message.channel.send(text)
+    await message.channel.send(str(text))
 
 
 def extract_structure(message):
