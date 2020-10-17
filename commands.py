@@ -1,70 +1,100 @@
-import userData
 import messages
-import random
-import datetime
+import files
+import money
+import user_data
+import alias
+import admin
+import help
+from permission import check
+from errors import WrongSyntax
+from errors import RulesAreNotAgreed
+from errors import LowerOrEqualZero
 
-async def run(command, message, structure):
-    if command == "userdata":
-        if userData.exists(message.author.id):
-            await messages.reply(message, str(userData))
-    if command == "setup":
-        if userData.exists(message.author.id):
-            await messages.reply(message, "UserData for **"+str(message.author)+"** already exists")
-        else:
-            userData.create(message.author.id)
+
+async def run(message):
+    try:
+        structure = messages.extract_structure(message)
+    except IndexError:
         return
-    if command == "cash":
-        if userData.exists(message.author.id):
-            await messages.reply(message, "**"+str(message.author)+"**, you currently have "+'{:,}'.format(userData.read(message.author.id)["money"])+"€")
-        else:
-            await run("setup",message,structure)
-            await run(command,message,structure)
-    if command == "cf" or command == "coinflip":
-        if userData.exists(message.author.id):
-            try:
-                bet = structure[2]
-            except IndexError:
-                bet = 1
-            try:
-                bet = int(bet)
-            except ValueError:
-                if bet == "all":
-                    bet = userData.read(message.author.id) ["money"]
-                else:
-                    bet = 1
-            if userData.read(message.author.id)["money"] < bet:
-                await messages.reply(message, "You dont have enough money")
-                return
-            if bet <= 0:
-                await messages.reply(message, "HABEN SIE NICHT VERSTANDEN WIE FUNKTIONIERT ?")
-                return
-            data = userData.read(message.author.id)
-            if random.randint(0,1) == 1:
-                await messages.reply(message, "**"+str(message.author)+"**,"+" you have won : "+'{:,}'.format(bet)+"€")
-                data["money"] = data["money"] + bet
-                userData.write(message.author.id, data)
-                return
+
+    command = structure[1].lower()
+    id = str(message.author.id)
+    user = "**"+str(message.author)+"**"
+
+    if command in alias.help:
+        await messages.reply(help.main(), message)
+        return
+    elif command in alias.daily:
+        try:
+            if money.daily(id):
+                await messages.reply(user+", here is your daily 1000€", message)
             else:
-                await messages.reply(message,"**"+str(message.author)+"**,"+" you have lost : "'{:,}'.format(bet)+"€")
-                data["money"] = data["money"] - bet
-                userData.write(message.author.id, data)
-                return
-        else:
-            await run("setup", message, structure)
-            await run("cf", message, structure)
+                await messages.reply(user+", you already got your daily 1000€", message)
 
-    if command == "daily":
-        if userData.exists(message.author.id):
-            if not userData.keyExists(message.author.id,"lastDaily",str(datetime.date.today())):
-                await messages.reply(message, "You got 1,000 €")
-                data = userData.read(message.author.id)
-                data["money"] = data["money"]+1000
-                userData.write(message.author.id, data)
-                return
-            elif userData.read(message.author.id)["lastDaily"] == str(datetime.date.today()):
-                await messages.reply(message, "You have already claimed your daily")
+        except KeyError:
+            user_data.add_key(id, "lastDaily", " ")
 
+        return
+    elif command in alias.send:
+        sender_id = "<@!"+str(id)+">"
+        reciever_id = structure[3]
+        amount = int(structure[2])
+        if sender_id == reciever_id:
+            await messages.reply("No "+user+", you can't send yourself money", message)
+        if amount <= 0:
+            raise WrongSyntax
         else:
-            await run("setup", message, structure)
-            await run(command,message,structure)
+            print(str(amount)+ "!= 0")
+        try:
+            money.send(sender_id, reciever_id, amount)
+        except money.MoneyNotEnough:
+            await messages.reply("No "+user+", you do not have enough money")
+
+    elif command in alias.coinflip:
+        try:
+            messages.get_type(structure, 2)
+            amount = structure[2]
+        except TypeError:
+            if structure[2] == "all":
+                amount = money.get(id)
+            else:
+                amount = 1
+        try:
+            print(amount)
+            if money.coinflip(amount, id):
+                await messages.reply(user+", you got "+'{:,}'.format(int(amount))+"€ !", message)
+            else:
+                await messages.reply(user+", you lost "+'{:,}'.format(int(amount))+"€ !", message)
+        except LowerOrEqualZero:
+            await messages.reply(user + ", Nien",message)
+
+    elif command in alias.money:
+        await messages.reply(user + ", you have " + '{:,}'.format(money.get(id))+"€", message)
+        return
+
+    elif command == "agree":
+        user_data.create(id)
+        await messages.reply("Okay "+user+" !", message)
+        return
+
+    elif command == "set":
+        subcommand = structure[2]
+        if check(id):
+            if subcommand in alias.money:
+                admin.set_money(message, structure)
+            else:
+                raise WrongSyntax
+        else:
+            await messages.reply(user+" you aren't on the admin list", message)
+
+    elif command == "show":
+        try:
+            await messages.reply(admin.show(structure, message),message)
+        except RulesAreNotAgreed:
+            await messages.reply("The user hasn't agreed rules", message)
+
+    else:
+        await messages.reply(user+", command "+command+" wasn't recognized.", message)
+
+
 
