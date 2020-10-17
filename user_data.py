@@ -2,11 +2,11 @@ import files
 
 
 def path(id):
-    if "<@!" in id:
-        id = id.replace("<@!", "").replace(">","")
-        return "data/" + id + ".pkl"
+    if "<@!" in str(id):
+        id_new = id.replace("<@!", "").replace(">","")
+        return ".data/" + id_new + ".pkl"
     else:
-        return "data/"+ id + ".pkl"
+        return ".data/"+ id + ".pkl"
 
 
 def read(id):

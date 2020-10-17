@@ -3,6 +3,7 @@ import random
 import messages
 from datetime import date
 from errors import LowerOrEqualZero
+from errors import MoneyNotEnough
 
 class AmountLowerEqualZero(Exception):
     pass
@@ -15,6 +16,19 @@ class AmountLowerThanMoney(Exception):
 def get(id):
     return int(user_data.read(id)["money"])
 
+
+def send(sender_id, target_id, amount):
+    sender_data = user_data.read(sender_id)
+    target_data = user_data.read(target_id)
+    if get(sender_id) < amount:
+        raise MoneyNotEnough
+    else:
+        sender_data["money"] = get(sender_id) - amount
+        target_data["money"] = get(target_id) + amount
+        user_data.write(sender_id,sender_data)
+        user_data.write(target_id,target_data)
+
+    return
 
 def daily(id):
     data = user_data.read(id)

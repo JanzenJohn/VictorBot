@@ -34,6 +34,22 @@ async def run(message):
         except KeyError:
             user_data.add_key(id, "lastDaily", " ")
 
+        return
+    elif command in alias.send:
+        sender_id = "<@!"+str(id)+">"
+        reciever_id = structure[3]
+        amount = int(structure[2])
+        if sender_id == reciever_id:
+            await messages.reply("No "+user+", you can't send yourself money", message)
+        if amount <= 0:
+            raise WrongSyntax
+        else:
+            print(str(amount)+ "!= 0")
+        try:
+            money.send(sender_id, reciever_id, amount)
+        except money.MoneyNotEnough:
+            await messages.reply("No "+user+", you do not have enough money")
+
     elif command in alias.coinflip:
         try:
             messages.get_type(structure, 2)

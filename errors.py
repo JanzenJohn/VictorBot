@@ -7,3 +7,6 @@ class RulesAreNotAgreed(Exception):
 
 class LowerOrEqualZero(Exception):
     pass
+
+class MoneyNotEnough(Exception):
+    pass
