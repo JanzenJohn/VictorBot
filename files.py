@@ -1,10 +1,12 @@
 import pickle
+import os
+
+def write(file, data):
+    with open(file, "wb")as f:
+        pickle.dump(data, f)
+    f.close()
+
 
 def read(file):
     with open(file, "rb")as f:
-        output = pickle.load(f)
-        return output
-
-def write(file, input):
-    with open(file, "wb")as f:
-        pickle.dump(input, f)
+        return pickle.load(f)

@@ -1,82 +1,80 @@
-import userData
 import messages
-import random
-import datetime
 import files
+import money
+import user_data
+import alias
+import admin
+import help
+from permission import check
+from errors import WrongSyntax
+from errors import RulesAreNotAgreed
 
-async def run(command, message, structure):
-    if command == "userdata":
-        if userData.exists(message.author.id):
-            await messages.reply(message, str(userData))
+
+async def run(message):
+    try:
+        structure = messages.extract_structure(message)
+    except IndexError:
         return
-    elif command == "givetask":
-        if userData.exists(message.author.id):
-            print("A")
-        else:
-            userData.create(message.author.id)
-            await run(command, message, structure)
+
+    command = structure[1].lower()
+    id = str(message.author.id)
+    user = "**"+str(message.author)+"**"
+
+    if command in alias.help:
+        await messages.reply(help.main(), message)
         return
-    elif command == "cash":
-        if userData.exists(message.author.id):
-            await messages.reply(message, "**"+str(message.author)+"**, you currently have "+'{:,}'.format(userData.read(message.author.id)["money"])+"€")
-        else:
-            userData.create(message.author.id)
-            await run(command,message,structure)
-        return
-    elif command == "cf" or command == "coinflip":
-        if userData.exists(message.author.id):
-            try:
-                bet = structure[2]
-            except IndexError:
-                bet = 1
-            try:
-                bet = int(bet)
-            except ValueError:
-                if bet == "all":
-                    bet = userData.read(message.author.id) ["money"]
-                else:
-                    bet = 1
-            if userData.read(message.author.id)["money"] < bet:
-                await messages.reply(message, "**"+str(message.author)+"**, you dont have enough money")
-                return
-            if bet <= 0:
-                await messages.reply(message, "HABEN SIE NICHT VERSTANDEN WIE FUNKTIONIERT ?")
-                return
-            data = userData.read(message.author.id)
-            if random.randint(0,1) == 1:
-                await messages.reply(message, "**"+str(message.author)+"**,"+" you have won : "+'{:,}'.format(bet)+"€")
-                data["money"] = data["money"] + bet
-                userData.write(message.author.id, data)
-                return
+    elif command in alias.daily:
+        try:
+            if money.daily(id):
+                await messages.reply(user+", here is your daily 1000€", message)
             else:
-                await messages.reply(message,"**"+str(message.author)+"**,"+" you have lost : "'{:,}'.format(bet)+"€")
-                data["money"] = data["money"] - bet
-                userData.write(message.author.id, data)
-                return
-        else:
-            userData.create(message.author.id)
-            await run("cf", message, structure)
+                await messages.reply(user+", you already got your daily 1000€", message)
+
+        except KeyError:
+            user_data.add_key(id, "lastDaily", " ")
+
+    elif command in alias.coinflip:
+        try:
+            type = messages.get_type(structure, 2)
+        except TypeError:
+            if structure[2] == "all":
+                amount = user_data.read(id)["money"]
+            else:
+                amount = 1
+            type = "all"
+        if type == "int":
+            amount = structure[2]
+        try:
+            await messages.reply(money.coinflip(amount, id), message)
+        except ValueError:
+            await messages.reply(user + ", Nien",message)
+
+
+
+    elif command in alias.money:
+        await messages.reply(user + ", you have " + '{:,}'.format(money.get(id))+"€", message)
         return
 
-    elif command == "daily":
-        if userData.exists(message.author.id):
-            if not userData.keyExists(message.author.id,"lastDaily",str(datetime.date.today())):
-                await messages.reply(message, "**"+str(message.author)+"**, you got 1,000 €")
-                data = userData.read(message.author.id)
-                data["money"] = data["money"]+1000
-                userData.write(message.author.id, data)
-                return
-            elif userData.read(message.author.id)["lastDaily"] == str(datetime.date.today()):
-                await messages.reply(message, "You have already claimed your daily")
-
-        else:
-            userData.create(message.author.id)
-            await run(command,message,structure)
+    elif command == "agree":
+        user_data.create(id)
+        await messages.reply("Okay "+user+" !", message)
         return
-    elif command == "help":
-        with open("help.pkl", "rb")as f:
-            help = files.read("help.pkl")
-            await messages.reply(message, help)
-    else:
-        await messages.reply(message, "Command not recognised please try again \n Type vic help to list commands")
+
+    elif command == "set":
+        subcommand = structure[2]
+        if check(id):
+            if subcommand in alias.money:
+                admin.set_money(message, structure)
+            else:
+                raise WrongSyntax
+        else:
+            await messages.reply(user+" you aren't on the admin list", message)
+
+    elif command == "show":
+        try:
+            await messages.reply(admin.show(structure, message),message)
+        except RulesAreNotAgreed:
+            await messages.reply("The user hasn't agreed rules", message)
+
+
 
